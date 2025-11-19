@@ -1,0 +1,517 @@
+<!DOCTYPE html>
+<html lang="da">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Sara & Christian's Bryllup</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Georgia', serif;
+            line-height: 1.6;
+            color: #333;
+            background-color: #faf9f7;
+        }
+
+        .container {
+            max-width: 900px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+
+        /* Hero Section */
+        .hero {
+            background: linear-gradient(135deg, #a8b5a0 0%, #d4c5b9 100%);
+            color: white;
+            text-align: center;
+            padding: 120px 20px 100px;
+            position: relative;
+        }
+
+        .hero h1 {
+            font-size: 3.5em;
+            font-weight: 300;
+            letter-spacing: 3px;
+            margin-bottom: 20px;
+            font-family: 'Playfair Display', Georgia, serif;
+        }
+
+        .hero .date {
+            font-size: 1.3em;
+            letter-spacing: 2px;
+            font-weight: 300;
+            margin-top: 15px;
+        }
+
+        .hero .divider {
+            width: 80px;
+            height: 2px;
+            background: white;
+            margin: 25px auto;
+        }
+
+        /* Section Styles */
+        section {
+            padding: 80px 20px;
+        }
+
+        section h2 {
+            text-align: center;
+            font-size: 2.5em;
+            font-weight: 300;
+            margin-bottom: 15px;
+            color: #6b7a65;
+            font-family: 'Playfair Display', Georgia, serif;
+        }
+
+        section .subtitle {
+            text-align: center;
+            font-size: 1.1em;
+            color: #888;
+            margin-bottom: 50px;
+            font-style: italic;
+        }
+
+        /* Wedding Details Section */
+        .details {
+            background: #f5f3f0;
+        }
+
+        .details-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 40px;
+            max-width: 800px;
+            margin: 0 auto;
+        }
+
+        .detail-card {
+            text-align: center;
+            padding: 30px;
+            background: white;
+            border-radius: 8px;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.05);
+        }
+
+        .detail-card h3 {
+            font-size: 1.5em;
+            color: #6b7a65;
+            margin-bottom: 15px;
+            font-weight: 400;
+        }
+
+        .detail-card p {
+            color: #666;
+            line-height: 1.8;
+        }
+
+        .detail-card .time {
+            font-size: 1.2em;
+            font-weight: 600;
+            color: #333;
+            margin: 10px 0;
+        }
+
+        /* Schedule Section */
+        .schedule {
+            background: white;
+        }
+
+        .timeline {
+            max-width: 600px;
+            margin: 0 auto;
+        }
+
+        .timeline-item {
+            display: flex;
+            margin-bottom: 40px;
+            position: relative;
+        }
+
+        .timeline-item:not(:last-child)::after {
+            content: '';
+            position: absolute;
+            left: 60px;
+            top: 50px;
+            bottom: -40px;
+            width: 2px;
+            background: #e0d5cc;
+        }
+
+        .timeline-time {
+            font-size: 1.3em;
+            font-weight: 600;
+            color: #6b7a65;
+            width: 120px;
+            flex-shrink: 0;
+        }
+
+        .timeline-content {
+            flex: 1;
+            padding-left: 30px;
+        }
+
+        .timeline-content h3 {
+            font-size: 1.4em;
+            color: #333;
+            margin-bottom: 8px;
+            font-weight: 400;
+        }
+
+        .timeline-content p {
+            color: #666;
+            line-height: 1.6;
+        }
+
+        /* Activities Section */
+        .activities {
+            background: #f5f3f0;
+        }
+
+        .activity-card {
+            background: white;
+            padding: 35px;
+            margin-bottom: 30px;
+            border-radius: 8px;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.05);
+        }
+
+        .activity-card h3 {
+            font-size: 1.6em;
+            color: #6b7a65;
+            margin-bottom: 12px;
+            font-weight: 400;
+        }
+
+        .activity-card .activity-time {
+            color: #888;
+            font-style: italic;
+            margin-bottom: 15px;
+        }
+
+        .activity-card p {
+            color: #666;
+            line-height: 1.8;
+        }
+
+        .activities-list {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 25px;
+            margin-top: 30px;
+        }
+
+        .activity-item {
+            background: #faf9f7;
+            padding: 25px;
+            border-radius: 8px;
+            border-left: 4px solid #6b7a65;
+        }
+
+        .activity-item h4 {
+            font-size: 1.2em;
+            color: #333;
+            margin-bottom: 10px;
+            font-weight: 500;
+        }
+
+        .activity-item p {
+            color: #666;
+            font-size: 0.95em;
+        }
+
+        /* Accommodation Section */
+        .accommodation {
+            background: white;
+        }
+
+        .accommodation-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 35px;
+            margin-top: 40px;
+        }
+
+        .accommodation-card {
+            background: #f5f3f0;
+            padding: 35px;
+            border-radius: 8px;
+        }
+
+        .accommodation-card h3 {
+            font-size: 1.5em;
+            color: #6b7a65;
+            margin-bottom: 15px;
+            font-weight: 400;
+        }
+
+        .accommodation-card p {
+            color: #666;
+            line-height: 1.8;
+            margin-bottom: 10px;
+        }
+
+        .accommodation-card .note {
+            margin-top: 20px;
+            padding-top: 20px;
+            border-top: 1px solid #d4c5b9;
+            font-size: 0.95em;
+            font-style: italic;
+            color: #888;
+        }
+
+        /* RSVP Section */
+        .rsvp {
+            background: linear-gradient(135deg, #a8b5a0 0%, #d4c5b9 100%);
+            color: white;
+            text-align: center;
+        }
+
+        .rsvp h2 {
+            color: white;
+        }
+
+        .rsvp .subtitle {
+            color: rgba(255,255,255,0.9);
+        }
+
+        .rsvp-button {
+            display: inline-block;
+            background: white;
+            color: #6b7a65;
+            padding: 18px 50px;
+            text-decoration: none;
+            border-radius: 50px;
+            font-size: 1.2em;
+            font-weight: 500;
+            margin-top: 30px;
+            transition: all 0.3s ease;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.1);
+        }
+
+        .rsvp-button:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 6px 20px rgba(0,0,0,0.15);
+            background: #f9f9f9;
+        }
+
+        /* Footer */
+        footer {
+            background: #333;
+            color: white;
+            text-align: center;
+            padding: 30px 20px;
+            font-size: 0.9em;
+        }
+
+        footer p {
+            opacity: 0.8;
+        }
+
+        /* Responsive Design */
+        @media (max-width: 768px) {
+            .hero h1 {
+                font-size: 2.5em;
+            }
+
+            .hero .date {
+                font-size: 1.1em;
+            }
+
+            section h2 {
+                font-size: 2em;
+            }
+
+            section {
+                padding: 60px 20px;
+            }
+
+            .timeline-item {
+                flex-direction: column;
+            }
+
+            .timeline-item::after {
+                display: none;
+            }
+
+            .timeline-time {
+                width: 100%;
+                margin-bottom: 10px;
+            }
+
+            .timeline-content {
+                padding-left: 0;
+            }
+
+            .details-grid,
+            .activities-list,
+            .accommodation-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+
+        /* Smooth Scrolling */
+        html {
+            scroll-behavior: smooth;
+        }
+    </style>
+</head>
+<body>
+    <!-- Hero Section -->
+    <section class="hero">
+        <div class="container">
+            <h1>Sara & Christian</h1>
+            <div class="divider"></div>
+            <p class="date">Lørdag d. 06/06/2026</p>
+            <p class="date" style="font-size: 1em; margin-top: 10px;">Sødringholm | Havndal, Danmark</p>
+        </div>
+    </section>
+
+    <!-- Wedding Details -->
+    <section class="details">
+        <div class="container">
+            <h2>Bryllupsdetaljer</h2>
+            <p class="subtitle">Vær med til at fejre vores store dag</p>
+            <div class="details-grid">
+                <div class="detail-card">
+                    <h3>Dato</h3>
+                    <p class="time">Lørdag</p>
+                    <p class="time">d. 6. juni 2026</p>
+                </div>
+                <div class="detail-card">
+                    <h3>Lokation</h3>
+                    <p class="time">Sødringholm</p>
+                    <p>Sødringholmvej 10<br>8970 Havndal<br>Danmark</p>
+                </div>
+                <div class="detail-card">
+                    <h3>Dress Code</h3>
+                    <p class="time">Festtøj</p>
+                    <p>Vi opfordrer jer til at tage jeres fineste tøj på til fejringen</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Schedule Section -->
+    <section class="schedule">
+        <div class="container">
+            <h2>Program</h2>
+            <p class="subtitle">Lørdag d. 6. juni</p>
+            <div class="timeline">
+                <div class="timeline-item">
+                    <div class="timeline-time">14:00</div>
+                    <div class="timeline-content">
+                        <h3>Vielsen</h3>
+                        <p>Følg med os i kirken til vores vielse. Mød venligst op 15 minutter før.</p>
+                        <p style="margin-top: 8px; font-style: italic; color: #888;">Sødring Kirke</p>
+                    </div>
+                </div>
+                <div class="timeline-item">
+                    <div class="timeline-time">16:00</div>
+                    <div class="timeline-content">
+                        <h3>Reception</h3>
+                        <p>Fejr med os på Sødringholm med cocktails, snacks og godt selskab.</p>
+                    </div>
+                </div>
+                <div class="timeline-item">
+                    <div class="timeline-time">18:00</div>
+                    <div class="timeline-content">
+                        <h3>Middag</h3>
+                        <p>En lækker middag vil blive serveret med danske specialiteter.</p>
+                    </div>
+                </div>
+                <div class="timeline-item">
+                    <div class="timeline-time">23:00</div>
+                    <div class="timeline-content">
+                        <h3>Fest</h3>
+                        <p>Dans natten væk mens vi fejrer ind i de små timer!</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Activities Section -->
+    <section class="activities">
+        <div class="container">
+            <h2>Weekendens Aktiviteter</h2>
+            <p class="subtitle">Mere end bare et bryllup</p>
+            
+            <div class="activity-card">
+                <h3>Fredagsreception</h3>
+                <p class="activity-time">Fredag d. 5. juni | 18:00 - 24:00</p>
+                <p>Kom og vær med aftenen før til en uformel reception på gården. Det er en vidunderlig mulighed for at mødes med venner og familie i afslappede rammer før den store dag. Der vil blive serveret drinks og lette forfriskninger.</p>
+            </div>
+
+            <div style="margin-top: 50px;">
+                <h3 style="text-align: center; font-size: 1.8em; color: #6b7a65; margin-bottom: 30px; font-weight: 400;">Yderligere Aktiviteter</h3>
+                <p style="text-align: center; margin-bottom: 40px; color: #666;">Vi har organiseret flere sjove aktiviteter gennem weekenden for dem, der har lyst til at deltage</p>
+                
+                <div class="activities-list">
+                    <div class="activity-item">
+                        <h4>🏍️ ATV-kørsel</h4>
+                        <p>Oplev det danske landskab på en spændende ATV-tur rundt om gården og de omkringliggende stier.</p>
+                    </div>
+                    <div class="activity-item">
+                        <h4>🎾 Tennisturnering</h4>
+                        <p>Vis dine færdigheder i vores venlige tennisturnering. Alle niveauer er velkomne!</p>
+                    </div>
+                    <div class="activity-item">
+                        <h4>🎯 Lerskydning</h4>
+                        <p>Prøv kræfter med lerskydning med professionel instruktion.</p>
+                    </div>
+                </div>
+                
+                <p style="margin-top: 30px; text-align: center; color: #888; font-style: italic;">Flere detaljer og tilmelding kommer tættere på datoen</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Accommodation Section -->
+    <section class="accommodation">
+        <div class="container">
+            <h2>Overnatning</h2>
+            <p class="subtitle">Overnatningsmuligheder for vores gæster</p>
+            
+            <div class="accommodation-grid">
+                <div class="accommodation-card">
+                    <h3>På Gården</h3>
+                    <p>Vi har begrænsede overnatningsmuligheder på selve gården for dem, der gerne vil bo tæt på festlighederne. Disse værelser tildeles efter først-til-mølle princippet.</p>
+                    <p style="margin-top: 15px;"><strong>Kapacitet:</strong> Begrænset antal værelser</p>
+                    <div class="note">Angiv venligst din interesse i at overnatte på gården i jeres RSVP</div>
+                </div>
+                
+                <div class="accommodation-card">
+                    <h3>Hoteller i Nærheden</h3>
+                    <p>For gæster der foretrækker hotelovernatning, anbefaler vi følgende mulighed indenfor 15-20 minutters kørsel:</p>
+                    <p style="margin-top: 15px;"><strong>Hotel Randers</strong><br>Detaljer kommer senere</p>
+                    <div class="note">Vi anbefaler at booke tidligt, da det er højsæson i området</div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- RSVP Section -->
+    <section class="rsvp">
+        <div class="container">
+            <h2>Kom og Fejr Med Os</h2>
+            <p class="subtitle">Vi glæder os til at fejre sammen med jer</p>
+            <p style="max-width: 600px; margin: 20px auto; line-height: 1.8;">Lad os venligst vide, om I kan deltage ved at udfylde vores RSVP-formular. Vi beder venligst om jeres svar senest d. 1. maj 2026.</p>
+            <a href="https://docs.google.com/forms/d/1Dj4znkym2Eezxs72N20KmrA_b9g16BB47e9nYHH096Q/viewform" class="rsvp-button" target="_blank">Svar På Invitation</a>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer>
+        <div class="container">
+            <p>Vi glæder os til at fejre sammen med jer!</p>
+            <p style="margin-top: 10px;">Ved spørgsmål, kontakt venligst: christianstolborg@gmail.com</p>
+        </div>
+    </footer>
+</body>
+</html>
