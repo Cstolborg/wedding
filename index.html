@@ -26,11 +26,50 @@
 
         /* Hero Section */
         .hero {
-            background: linear-gradient(135deg, #a8b5a0 0%, #d4c5b9 100%);
             color: white;
             text-align: center;
             padding: 120px 20px 100px;
             position: relative;
+            overflow: hidden;
+        }
+
+        .hero-slideshow {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            z-index: 0;
+        }
+
+        .hero-slideshow img {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            opacity: 0;
+            transition: opacity 1s ease-in-out;
+        }
+
+        .hero-slideshow img.active {
+            opacity: 1;
+        }
+
+        .hero-overlay {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(135deg, rgba(168, 181, 160, 0.85) 0%, rgba(212, 197, 185, 0.85) 100%);
+            z-index: 1;
+        }
+
+        .hero .container {
+            position: relative;
+            z-index: 2;
         }
 
         .hero h1 {
@@ -252,6 +291,112 @@
             font-size: 0.95em;
         }
 
+        .activity-item .activity-meta {
+            margin-top: 15px;
+            padding-top: 15px;
+            border-top: 1px solid #e0d5cc;
+            font-size: 0.9em;
+            color: #888;
+        }
+
+        .activity-item .activity-meta p {
+            margin-bottom: 5px;
+        }
+
+        .signup-button {
+            display: inline-block;
+            background: #6b7a65;
+            color: white;
+            padding: 10px 25px;
+            text-decoration: none;
+            border-radius: 25px;
+            font-size: 0.95em;
+            margin-top: 15px;
+            transition: all 0.3s ease;
+        }
+
+        .signup-button:hover {
+            background: #4a5a45;
+        }
+
+        .friday-signup {
+            text-align: center;
+            margin-top: 40px;
+        }
+
+        /* Toastmaster Section */
+        .toastmaster {
+            background: #f5f3f0;
+        }
+
+        .toastmaster-card {
+            background: white;
+            padding: 40px;
+            border-radius: 8px;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.05);
+            text-align: center;
+            max-width: 500px;
+            margin: 0 auto;
+        }
+
+        .toastmaster-card h3 {
+            font-size: 1.8em;
+            color: #6b7a65;
+            margin-bottom: 20px;
+            font-weight: 400;
+        }
+
+        .toastmaster-card .name {
+            font-size: 1.3em;
+            color: #333;
+            margin-bottom: 10px;
+        }
+
+        .toastmaster-card .phone {
+            font-size: 1.1em;
+            color: #666;
+        }
+
+        .toastmaster-card .phone a {
+            color: #6b7a65;
+            text-decoration: none;
+        }
+
+        /* Gifts Section */
+        .gifts {
+            background: white;
+            text-align: center;
+        }
+
+        .gifts-content {
+            max-width: 600px;
+            margin: 0 auto;
+        }
+
+        .gifts-content p {
+            font-size: 1.1em;
+            color: #666;
+            line-height: 1.8;
+            margin-bottom: 25px;
+        }
+
+        .wishlist-button {
+            display: inline-block;
+            background: transparent;
+            color: #6b7a65;
+            padding: 12px 30px;
+            text-decoration: none;
+            border-radius: 25px;
+            border: 2px solid #6b7a65;
+            font-size: 1em;
+            transition: all 0.3s ease;
+        }
+
+        .wishlist-button:hover {
+            background: #6b7a65;
+            color: white;
+        }
+
         /* Accommodation Section */
         .accommodation {
             background: white;
@@ -397,6 +542,10 @@
 <body>
     <!-- Hero Section -->
     <section class="hero">
+        <div class="hero-slideshow">
+            <!-- Billeder genereres automatisk via JavaScript -->
+        </div>
+        <div class="hero-overlay"></div>
         <div class="container">
             <h1>Sara Amalie & Christian</h1>
             <div class="divider"></div>
@@ -437,6 +586,12 @@
                     <h3>Fredag d. 5. juni <span class="optional-badge">Valgfri</span></h3>
                     <p class="day-date">Uformel sammenkomst</p>
                 </div>
+
+                <div class="friday-signup" style="margin-bottom: 40px;">
+                    <p style="color: #666; margin-bottom: 15px;">Deltager du fredag? Tilmeld dig her:</p>
+                    <a href="#" class="signup-button">Tilmeld til fredag</a>
+                </div>
+
                 <div class="timeline">
                     <div class="timeline-item">
                         <div class="timeline-time">Fra 16:00</div>
@@ -449,17 +604,51 @@
                         <div class="timeline-time">18:00</div>
                         <div class="timeline-content">
                             <h3>Fredagsreception</h3>
-                            <p>Kom og vær med til en uformel reception på gården. Det er en vidunderlig mulighed for at mødes med venner og familie i afslappede rammer før den store dag. Der vil blive serveret drinks og lette forfriskninger.</p>
+                            <p>Kom og vær med til en uformel reception på gården. Det er en vidunderlig mulighed for at mødes med venner og familie i afslappede rammer før den store dag. Der vil blive serveret forfriskninger og aftensmad.</p>
                         </div>
                     </div>
                     <div class="timeline-item">
                         <div class="timeline-time">24:00</div>
                         <div class="timeline-content">
                             <h3>Tak for i aften</h3>
-                            <p>Fredagsreceptionen slutter.</p>
                         </div>
                     </div>
                 </div>
+
+                <!-- Fredagsaktiviteter -->
+                <div style="margin-top: 50px;">
+                    <h4 style="text-align: center; font-size: 1.4em; color: #6b7a65; margin-bottom: 30px; font-weight: 400;">Fredagsaktiviteter</h4>
+                    <div class="activities-list">
+                        <div class="activity-item">
+                            <h4>🏍️ ATV-kørsel</h4>
+                            <p>Oplev det danske landskab på en spændende ATV-tur rundt om gården og de omkringliggende stier.</p>
+                            <div class="activity-meta">
+                                <p><strong>Ansvarlig:</strong> [Navn kommer]</p>
+                                <p><strong>Tilmeldingsfrist:</strong> [Dato kommer]</p>
+                            </div>
+                            <a href="#" class="signup-button">Tilmeld dig</a>
+                        </div>
+                        <div class="activity-item">
+                            <h4>🎾 Tennisturnering</h4>
+                            <p>Vis dine færdigheder i vores venlige tennisturnering. Alle niveauer er velkomne!</p>
+                            <div class="activity-meta">
+                                <p><strong>Ansvarlig:</strong> [Navn kommer]</p>
+                                <p><strong>Tilmeldingsfrist:</strong> [Dato kommer]</p>
+                            </div>
+                            <a href="#" class="signup-button">Tilmeld dig</a>
+                        </div>
+                        <div class="activity-item">
+                            <h4>🎯 Lerdueskydning</h4>
+                            <p>Prøv kræfter med lerdueskydning med professionel instruktion.</p>
+                            <div class="activity-meta">
+                                <p><strong>Ansvarlig:</strong> [Navn kommer]</p>
+                                <p><strong>Tilmeldingsfrist:</strong> [Dato kommer]</p>
+                            </div>
+                            <a href="#" class="signup-button">Tilmeld dig</a>
+                        </div>
+                    </div>
+                </div>
+
             </div>
 
             <!-- Saturday -->
@@ -473,7 +662,7 @@
                         <div class="timeline-time">14:00</div>
                         <div class="timeline-content">
                             <h3>Vielsen</h3>
-                            <p>Følg med os i kirken til vores vielse. Mød venligst op 15 minutter før.</p>
+                            <p>Mød venligst op 15 minutter før.</p>
                             <p style="margin-top: 8px; font-style: italic; color: #888;">Sødring Kirke</p>
                         </div>
                     </div>
@@ -527,28 +716,25 @@
         </div>
     </section>
 
-    <!-- Activities Section -->
-    <section class="activities">
+    <!-- Toastmaster Section -->
+    <section class="toastmaster">
         <div class="container">
-            <h2>Weekendens Aktiviteter</h2>
-            <p class="subtitle">Sjove aktiviteter gennem weekenden</p>
-            
-            <div class="activities-list">
-                <div class="activity-item">
-                    <h4>🏍️ ATV-kørsel</h4>
-                    <p>Oplev det danske landskab på en spændende ATV-tur rundt om gården og de omkringliggende stier.</p>
-                </div>
-                <div class="activity-item">
-                    <h4>🎾 Tennisturnering</h4>
-                    <p>Vis dine færdigheder i vores venlige tennisturnering. Alle niveauer er velkomne!</p>
-                </div>
-                <div class="activity-item">
-                    <h4>🎯 Lerdueskydning</h4>
-                    <p>Prøv kræfter med lerdueskydning med professionel instruktion.</p>
-                </div>
+            <div class="toastmaster-card">
+                <h3>Toastmaster</h3>
+                <p class="name">Andreas Markussen</p>
+                <p class="phone"><a href="tel:+4550124510">+45 50 12 45 10</a></p>
             </div>
-            
-            <p style="margin-top: 30px; text-align: center; color: #888; font-style: italic;">Flere detaljer og tilmelding kommer tættere på datoen</p>
+        </div>
+    </section>
+
+    <!-- Gifts Section -->
+    <section class="gifts">
+        <div class="container">
+            <h2>Gaver</h2>
+            <div class="gifts-content">
+                <p>Gaver er ikke forventet, men jeres bedste festhumør er obligatorisk!</p>
+                <a href="#" class="wishlist-button">Se ønskeliste</a>
+            </div>
         </div>
     </section>
 
@@ -561,15 +747,21 @@
             <div class="accommodation-grid">
                 <div class="accommodation-card">
                     <h3>På Gården</h3>
-                    <p>Vi har begrænsede overnatningsmuligheder på selve gården for dem, der gerne vil bo tæt på festlighederne. Disse værelser tildeles efter først-til-mølle princippet.</p>
-                    <p style="margin-top: 15px;"><strong>Kapacitet:</strong> Begrænset antal værelser</p>
-                    <div class="note">Angiv venligst din interesse i at overnatte på gården i jeres RSVP</div>
+                    <p>Vi laver sovesale på gården for dem, der gerne vil bo tæt på festlighederne. Det er den perfekte mulighed for at fortsætte hyggen efter festen!</p>
+                    <a href="#" class="signup-button" style="margin-top: 20px;">Tilmeld til sovesal</a>
                 </div>
                 
                 <div class="accommodation-card">
                     <h3>Hoteller i Nærheden</h3>
-                    <p>For gæster der foretrækker hotelovernatning, anbefaler vi følgende mulighed indenfor 15-20 minutters kørsel:</p>
-                    <p style="margin-top: 15px;"><strong>Hotel Randers</strong><br>Detaljer kommer senere</p>
+                    <p>For gæster der foretrækker hotelovernatning, anbefaler vi følgende muligheder indenfor 15-20 minutters kørsel:</p>
+                    <p style="margin-top: 15px;">
+                        <strong>Hotel Randers</strong><br>
+                        Rabatkode: <strong>Sødringholm</strong>
+                    </p>
+                    <p style="margin-top: 15px;">
+                        <strong>Hotel Kronjylland</strong><br>
+                        Rabatkode: <strong>Sødringholm</strong>
+                    </p>
                     <div class="note">Vi anbefaler at booke tidligt, da det er højsæson i området</div>
                 </div>
             </div>
@@ -593,5 +785,41 @@
             <p style="margin-top: 10px;">Ved spørgsmål, kontakt venligst: christianstolborg@gmail.com</p>
         </div>
     </footer>
+
+    <script>
+        // Hero slideshow - tilføj nye billeder her:
+        const heroImages = [
+            'images/IMG_0552.JPG',
+            'images/IMG_1078.JPG',
+            'images/IMG_1556.JPG',
+            'images/IMG_5312.jpeg',
+            'images/IMG_5526.JPG',
+            'images/IMG_1845.jpeg',
+            'images/IMG_6694.jpeg'
+        ];
+
+        // Generer billeder automatisk
+        const slideshow = document.querySelector('.hero-slideshow');
+        slideshow.innerHTML = '';
+        heroImages.forEach((src, index) => {
+            const img = document.createElement('img');
+            img.src = src;
+            img.alt = 'Sara Amalie & Christian';
+            if (index === 0) img.classList.add('active');
+            slideshow.appendChild(img);
+        });
+
+        // Skift billede hvert 10. sekund
+        const slides = document.querySelectorAll('.hero-slideshow img');
+        let currentSlide = 0;
+
+        function nextSlide() {
+            slides[currentSlide].classList.remove('active');
+            currentSlide = (currentSlide + 1) % slides.length;
+            slides[currentSlide].classList.add('active');
+        }
+
+        setInterval(nextSlide, 10000);
+    </script>
 </body>
 </html>
