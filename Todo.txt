@@ -1,0 +1,33 @@
+- Mangler info om bus til dem der booker hotel. Bus bliver bestilt fra kl. 01 af.
+
+
+Fredag: 
+- Slet "Tilmeld knap"
+- Slet ankomst.
+- Ændrer Fredagsreception til "Fredagsreception og aktiviter". Sæt til kl. 15.00.
+- Ændrer teksten under fredagsreception til: "Kom og vær med til en uformel dag på gården. Vi har planlagt aktiviter såsom ATV-kørsel, lerdueskydning og tennisturnering. Om aftenen vil der blive serveret forfriskninger og aftensmad."
+- Slet sektionen "Fredagsaktiviter".
+
+
+Lørdag:
+- Ryk Vielsen til kl. 15.00. Mød op 20 min før.
+
+
+- Søndag. Slet hele den dag.
+
+
+
+Overnatning:
+- På gården. Ændrer tekst til "Overnatning kan finde sted på gården i primitive, men hyggelige rammer i fælles sovesal med madrasser på gulvet."
+- Under hoteller skriv at der kommer busser og henter gæster inden brylluppet  og som kører dem hjem igen senere i løbet af natten.
+
+
+
+I bunden "Komg og Fejr med os"
+- Opdater tekst til "Vi glæder os til at fejre vores BRYLLUP sammen med jer"
+
+- Under footeren Slet "Vi glæder os til at fejre sammen med jer!" da det står lige ovenover.
+
+
+
+Lav en "Svar på invitation" knap der er ens med den i bunden under "Bryllupsdetaljer".
